@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ลงทะเบียน Agency Leaders Kick Off 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#d71920; --red-dark:#9b0d14; --red-deep:#5c070b; --red-soft:#fdecec;
+    --ink:#2a1214; --muted:#7a5a5c; --line:#f0c9cb; --white:#fff; --gold:#ffd36b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:'Kanit',system-ui,sans-serif; color:var(--ink);
+    background:linear-gradient(160deg,var(--red-deep) 0%,var(--red-dark) 45%,var(--red) 100%);
+    min-height:100vh; padding:0 16px 40px;
+  }
+  .hero{max-width:560px; margin:0 auto; text-align:center; color:#fff; padding:36px 0 24px}
+  .tag{display:inline-block; letter-spacing:.18em; font-size:12px; font-weight:500;
+    border:1px solid rgba(255,255,255,.5); padding:5px 14px; border-radius:99px; margin-bottom:14px}
+  h1{margin:0; font-size:30px; line-height:1.2; font-weight:700}
+  h1 span{display:block; font-size:44px; color:var(--gold)}
+  .theme{margin:22px auto 0; padding:16px 18px; background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25); border-radius:16px; font-size:20px; font-weight:600}
+  .theme sup{font-size:.65em; color:var(--gold)}
+  .theme small{display:block; margin-top:4px; font-weight:300; font-size:13px; opacity:.85}
+  .card{max-width:560px; margin:0 auto; background:var(--white); border-radius:22px;
+    padding:26px 22px 28px; box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .card h2{margin:0 0 4px; font-size:20px; color:var(--red-dark)}
+  .card p.sub{margin:0 0 20px; color:var(--muted); font-size:14px; font-weight:300}
+  label{display:block; font-weight:500; font-size:14px; margin:14px 0 6px}
+  label i{color:var(--red); font-style:normal}
+  input,select{
+    width:100%; padding:13px 14px; font:inherit; font-size:16px; color:var(--ink);
+    border:1.5px solid var(--line); border-radius:12px; background:#fffafa; outline:none;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  input:focus,select:focus{border-color:var(--red); box-shadow:0 0 0 4px rgba(215,25,32,.14)}
+  .err{display:none; color:var(--red); font-size:12.5px; margin-top:5px}
+  .invalid input,.invalid select{border-color:var(--red); background:var(--red-soft)}
+  .invalid .err{display:block}
+  button{
+    margin-top:24px; width:100%; padding:15px; font:inherit; font-size:17px; font-weight:600;
+    color:#fff; border:0; border-radius:14px; cursor:pointer;
+    background:linear-gradient(135deg,var(--red),var(--red-dark));
+    box-shadow:0 8px 20px rgba(155,13,20,.35); transition:transform .1s, opacity .2s;
+  }
+  button:active{transform:scale(.98)}
+  button:disabled{opacity:.6; cursor:wait}
+  .note{margin-top:14px; font-size:12px; color:var(--muted); text-align:center; font-weight:300}
+  .banner{display:none; margin-bottom:14px; padding:12px 14px; border-radius:12px; font-size:14px}
+  .banner.error{display:block; background:var(--red-soft); color:var(--red-dark); border:1px solid var(--line)}
+  .success{display:none; text-align:center; padding:12px 0}
+  .success .ok{width:76px; height:76px; margin:0 auto 14px; border-radius:50%;
+    background:linear-gradient(135deg,var(--red),var(--red-dark)); color:#fff;
+    font-size:40px; line-height:76px}
+  .success h2{font-size:22px}
+  .success .sum{margin:18px 0 6px; text-align:left; background:var(--red-soft);
+    border-radius:14px; padding:14px 16px; font-size:14px}
+  .success .sum div{display:flex; justify-content:space-between; gap:12px; padding:4px 0}
+  .success .sum b{font-weight:500; color:var(--red-dark)}
+  .ghost{background:#fff; color:var(--red); border:1.5px solid var(--red); box-shadow:none}
+  .setup{max-width:560px; margin:14px auto 0; padding:10px 14px; border-radius:12px;
+    background:rgba(255,255,255,.14); color:#fff; font-size:13px; display:none}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="tag">REGISTRATION</div>
+  <h1>Agency Leaders<span>Kick Off 2027</span></h1>
+  <div class="theme">
+    สร้าง <b>×</b> เสริม <b>=</b> สำเร็จ<sup>2</sup>
+    <small>สร้าง × เสริม = สำเร็จ ยกกำลังสอง</small>
+  </div>
+</header>
+
+<main class="card">
+  <div id="formWrap">
+    <h2>ลงทะเบียนเข้างาน</h2>
+    <p class="sub">กรุณากรอกข้อมูลให้ครบถ้วน เพื่อยืนยันสิทธิ์เข้าร่วมงาน</p>
+    <div id="banner" class="banner" role="alert"></div>
+
+    <form id="regForm" novalidate>
+      <div class="field" data-f="fullName">
+        <label for="fullName">ชื่อ-นามสกุล <i>*</i></label>
+        <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="เช่น สมชาย ใจดี">
+        <div class="err">กรุณากรอกชื่อและนามสกุล (เว้นวรรคระหว่างชื่อกับนามสกุล)</div>
+      </div>
+
+      <div class="field" data-f="province">
+        <label for="province">จังหวัด <i>*</i></label>
+        <select id="province" name="province"><option value="">— เลือกจังหวัด —</option></select>
+        <div class="err">กรุณาเลือกจังหวัด</div>
+      </div>
+
+      <div class="field" data-f="office">
+        <label for="office">ชื่อสำนักงาน <i>*</i></label>
+        <input id="office" name="office" type="text" placeholder="ชื่อสำนักงานของคุณ">
+        <div class="err">กรุณากรอกชื่อสำนักงาน</div>
+      </div>
+
+      <div class="field" data-f="phone">
+        <label for="phone">เบอร์โทรศัพท์ <i>*</i></label>
+        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="12" placeholder="0812345678">
+        <div class="err">กรุณากรอกเบอร์โทรศัพท์ 10 หลัก (ขึ้นต้นด้วย 0)</div>
+      </div>
+
+      <div class="field" data-f="agentCode">
+        <label for="agentCode">รหัสตัวแทน <i>*</i></label>
+        <input id="agentCode" name="agentCode" type="text" autocapitalize="characters" placeholder="กรอกรหัสตัวแทน">
+        <div class="err">กรุณากรอกรหัสตัวแทน (ตัวอักษร/ตัวเลข 4–15 ตัว)</div>
+      </div>
+
+      <button type="submit" id="submitBtn">ยืนยันการลงทะเบียน</button>
+      <div class="note">ข้อมูลของคุณจะถูกใช้เพื่อการลงทะเบียนเข้างานนี้เท่านั้น</div>
+    </form>
+  </div>
+
+  <div id="success" class="success">
+    <div class="ok">✓</div>
+    <h2>ลงทะเบียนสำเร็จ</h2>
+    <p class="sub">ขอบคุณที่ลงทะเบียน แล้วพบกันในงาน</p>
+    <div class="sum" id="sum"></div>
+    <button type="button" id="again" class="ghost">ลงทะเบียนอีกท่าน</button>
+  </div>
+</main>
+
+<div id="setup" class="setup">⚠ ยังไม่ได้ตั้งค่า SCRIPT_URL — ดูวิธีตั้งค่าในไฟล์ README</div>
+
+<script>
+// ====== ตั้งค่า: วาง Web App URL จาก Google Apps Script ที่นี่ ======
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+// ===============================================================
+
+const PROVINCES = ["กรุงเทพมหานคร","กระบี่","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา","ชลบุรี","ชัยนาท","ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง","ตราด","ตาก","นครนายก","นครปฐม","นครพนม","นครราชสีมา","นครศรีธรรมราช","นครสวรรค์","นนทบุรี","นราธิวาส","น่าน","บึงกาฬ","บุรีรัมย์","ปทุมธานี","ประจวบคีรีขันธ์","ปราจีนบุรี","ปัตตานี","พระนครศรีอยุธยา","พังงา","พัทลุง","พิจิตร","พิษณุโลก","เพชรบุรี","เพชรบูรณ์","แพร่","พะเยา","ภูเก็ต","มหาสารคาม","มุกดาหาร","แม่ฮ่องสอน","ยโสธร","ยะลา","ร้อยเอ็ด","ระนอง","ระยอง","ราชบุรี","ลพบุรี","ลำปาง","ลำพูน","เลย","ศรีสะเกษ","สกลนคร","สงขลา","สตูล","สมุทรปราการ","สมุทรสงคราม","สมุทรสาคร","สระแก้ว","สระบุรี","สิงห์บุรี","สุโขทัย","สุพรรณบุรี","สุราษฎร์ธานี","สุรินทร์","หนองคาย","หนองบัวลำภู","อ่างทอง","อำนาจเจริญ","อุดรธานี","อุตรดิตถ์","อุทัยธานี","อุบลราชธานี"];
+
+const $ = id => document.getElementById(id);
+const form = $("regForm");
+const sel = $("province");
+PROVINCES.forEach(p => { const o = document.createElement("option"); o.value = o.textContent = p; sel.appendChild(o); });
+
+if (SCRIPT_URL.startsWith("PASTE_")) $("setup").style.display = "block";
+
+const rules = {
+  fullName: v => v.trim().split(/\s+/).filter(Boolean).length >= 2 && v.trim().length >= 4,
+  province: v => v !== "",
+  office:   v => v.trim().length >= 2,
+  phone:    v => /^0\d{9}$/.test(v.replace(/[-\s]/g, "")),
+  agentCode:v => /^[A-Za-z0-9]{4,15}$/.test(v.trim())
+};
+
+function check(name){
+  const el = form.elements[name];
+  const ok = rules[name](el.value);
+  el.closest(".field").classList.toggle("invalid", !ok);
+  return ok;
+}
+Object.keys(rules).forEach(n => {
+  form.elements[n].addEventListener("blur", () => check(n));
+  form.elements[n].addEventListener("input", () => {
+    if (form.elements[n].closest(".field").classList.contains("invalid")) check(n);
+  });
+});
+$("phone").addEventListener("input", e => { e.target.value = e.target.value.replace(/[^\d-]/g, ""); });
+$("agentCode").addEventListener("input", e => { e.target.value = e.target.value.toUpperCase(); });
+
+function showBanner(msg){ const b = $("banner"); b.textContent = msg; b.className = "banner error"; }
+function clearBanner(){ $("banner").className = "banner"; }
+
+form.addEventListener("submit", async e => {
+  e.preventDefault(); clearBanner();
+  const allOk = Object.keys(rules).map(check).every(Boolean);
+  if (!allOk){ const first = form.querySelector(".invalid input, .invalid select"); if (first) first.focus(); return; }
+  if (SCRIPT_URL.startsWith("PASTE_")){ showBanner("ระบบยังไม่ได้เชื่อมต่อ Google Sheet — กรุณาแจ้งผู้ดูแลระบบ"); return; }
+
+  const data = {
+    fullName: form.fullName.value.trim().replace(/\s+/g, " "),
+    province: form.province.value,
+    office: form.office.value.trim(),
+    phone: form.phone.value.replace(/[-\s]/g, ""),
+    agentCode: form.agentCode.value.trim().toUpperCase(),
+    userAgent: navigator.userAgent.slice(0, 160)
+  };
+
+  const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "กำลังบันทึก…";
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data)
+    });
+    const out = await res.json();
+    if (out.status === "ok") {
+      $("sum").innerHTML = [
+        ["ชื่อ-นามสกุล", data.fullName], ["จังหวัด", data.province], ["สำนักงาน", data.office],
+        ["เบอร์โทร", data.phone], ["รหัสตัวแทน", data.agentCode]
+      ].map(([k,v]) => `<div><span>${k}</span><b>${v.replace(/</g,"&lt;")}</b></div>`).join("");
+      $("formWrap").style.display = "none"; $("success").style.display = "block";
+      window.scrollTo({top:0, behavior:"smooth"});
+    } else if (out.status === "duplicate") {
+      showBanner("รหัสตัวแทนนี้ลงทะเบียนไว้แล้ว หากต้องการแก้ไขข้อมูล กรุณาติดต่อทีมงาน");
+    } else {
+      showBanner(out.message || "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง");
+    }
+  } catch (err) {
+    showBanner("ไม่สามารถเชื่อมต่อระบบได้ กรุณาตรวจสอบอินเทอร์เน็ตแล้วลองใหม่");
+  } finally {
+    btn.disabled = false; btn.textContent = "ยืนยันการลงทะเบียน";
+  }
+});
+
+$("again").addEventListener("click", () => {
+  form.reset(); $("success").style.display = "none"; $("formWrap").style.display = "block";
+  document.querySelectorAll(".invalid").forEach(f => f.classList.remove("invalid"));
+});
+</script>
+</body>
+</html>
